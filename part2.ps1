@@ -49,7 +49,7 @@ function Return-Accounts([string]$ip, [switch]$remote){
     if($remote) {
         Get-WmiObject win32_UserAccount -ComputerName $ip
     } else {
-        Get-WmiObject win32_UserAccount -ComputerName . |  Select -First 5 | Format-Table
+        Get-WmiObject win32_UserAccount -ComputerName . | Format-Table
     }
     
 }
