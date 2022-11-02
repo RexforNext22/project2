@@ -9,6 +9,8 @@ param(
 
 # Functions
 
+
+# Function to return the bios information
 function Return-Bios([string]$ip, [switch]$remote){
 
     if($remote) {
@@ -19,6 +21,7 @@ function Return-Bios([string]$ip, [switch]$remote){
     
 }
 
+# Function to return the running programs
 function Return-Process([string]$ip, [switch]$remote){
 
     if($remote) {
@@ -29,6 +32,7 @@ function Return-Process([string]$ip, [switch]$remote){
     
 }
 
+# Function to return the installed software
 function Return-Product([string]$ip, [switch]$remote){
 
     if($remote) {
@@ -39,6 +43,7 @@ function Return-Product([string]$ip, [switch]$remote){
     
 }
 
+# Function to return account information
 function Return-Accounts([string]$ip, [switch]$remote){
 
     if($remote) {
