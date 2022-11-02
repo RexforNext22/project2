@@ -39,6 +39,17 @@ function Return-Product([string]$ip, [switch]$remote){
     
 }
 
+function Return-Accounts([string]$ip, [switch]$remote){
+
+    if($remote) {
+        Get-WmiObject win32_UserAccount -ComputerName $ip
+    } else {
+        Get-WmiObject win32_UserAccount -ComputerName . |  Select -First 5 | Format-Table
+    }
+    
+}
+
+
 # Main
 Write-Host "--------------------------------------------------------"
 Write-Host "BIOS INFORMATION"
@@ -49,6 +60,9 @@ Return-Process
 Write-Host "--------------------------------------------------------"
 Write-Host "SOFTWARE INFORMATION"
 Return-Poduct
+Write-Host "--------------------------------------------------------"
+Write-Host "ACCOUNTS"
+Return-Accounts
 Write-Host "--------------------------------------------------------"
 
 
