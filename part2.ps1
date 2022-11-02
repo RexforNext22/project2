@@ -54,27 +54,58 @@ function Return-Accounts([string]$ip, [switch]$remote){
     
 }
 
+# Function to return network information
+function Return-Network([string]$ip, [switch]$remote){
+
+    if($remote) {
+        Get-WmiObject win32_networkadapter -ComputerName $ip
+    } else {
+        Get-WmiObject win32_networkadapter -ComputerName . | Format-Table
+    }
+    
+}
+
+# Function to return disk storage
+function Return-Storage([string]$ip, [switch]$remote){
+
+    if($remote) {
+        Get-WmiObject Win32_logicaldisk -ComputerName $ip
+    } else {
+        Get-WmiObject Win32_logicaldisk -ComputerName . | Format-Table
+    }
+    
+}
+
+# Function to return volume
+function Return-Volume([string]$ip, [switch]$remote){
+
+    if($remote) {
+        Get-WmiObject Win32_Volume -ComputerName $ip
+    } else {
+        Get-WmiObject Win32_Volume -ComputerName . | Format-Table
+    }
+    
+}
+
+# Function to return processor information
+function Return-Processor([string]$ip, [switch]$remote){
+
+    if($remote) {
+        Get-WmiObject Win32_Processor -ComputerName $ip
+    } else {
+        Get-WmiObject Win32_Processor -ComputerName . | Format-Table
+    }
+    
+}
+
 
 # Main
-Write-Host "--------------------------------------------------------"
-Write-Host "BIOS INFORMATION"
-Return-Bios 
-Write-Host "--------------------------------------------------------"
-Write-Host "PROCESS INFORMATION"
-Return-Process 
-Write-Host "--------------------------------------------------------"
-Write-Host "SOFTWARE INFORMATION"
-Return-Poduct
-Write-Host "--------------------------------------------------------"
-Write-Host "ACCOUNTS"
-Return-Accounts
-Write-Host "--------------------------------------------------------"
-
-
-
-
-
-
-
-
-
+Return-Bios > output.txt
+Return-Process >> output.txt
+Return-Product >> output.txt
+Return-Accounts >> output.txt
+Return-Network >> output.txt
+Return-Storage >> output.txt
+Return-Volume >> output.txt
+Return-Processor >> output.txt
+Get-Content .\output.txt
