@@ -1,4 +1,4 @@
-# This is script will output information about the current machine.
+ # This is script will output information about the current machine.
 # Authors: Ryan Pinkney, Tanner Davis, Tyler Steele, Kevin Gutierrez
 
 # Parameters
@@ -100,7 +100,8 @@ function Return-Processor([string]$ip, [switch]$remote){
 
 
 # Main
-Return-Bios > output.txt
+# Run the function and append to the txt file
+Return-Bios >> output.txt
 Return-Process >> output.txt
 Return-Product >> output.txt
 Return-Accounts >> output.txt
@@ -108,4 +109,6 @@ Return-Network >> output.txt
 Return-Storage >> output.txt
 Return-Volume >> output.txt
 Return-Processor >> output.txt
-Get-Content .\output.txt
+
+# Print out the output to a file
+Get-Content .\output.txt 
